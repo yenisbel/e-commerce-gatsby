@@ -32,7 +32,7 @@ const redirectToCheckout = async event => {
 const Checkout = () => {
   return (
     <button style={buttonStyles} onClick={redirectToCheckout}>
-      BUY MY T-SHIRT
+      BUY MY APPAREL
     </button>
   )
 }

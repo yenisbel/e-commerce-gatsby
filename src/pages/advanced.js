@@ -1,5 +1,6 @@
 import React from "react"
-import { Link } from "gatsby";
+import { Link } from "gatsby"
+import Cart from "../components/Cart"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -9,9 +10,11 @@ import Skus from "../components/Products/Skus"
 const AdvancedExamplePage = () => (
   <Layout>
     <SEO title="Advanced Example" />
-    <h1>This is the advanced example</h1>
-    <Skus />
-    <Link to="/">Go back to the first example</Link>
+    <h1>This is the popular apparel for casual events</h1>
+    <Cart>
+      <Skus />
+    </Cart>
+    <Link to="/">Go back to the full catalog</Link>
   </Layout>
 )
 

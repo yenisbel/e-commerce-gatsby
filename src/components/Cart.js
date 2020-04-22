@@ -1,5 +1,5 @@
 import React from "react"
-import Checkout from "./checkout"
+import Checkout from "./advancedCheckout"
 const Cart = class extends React.Component {
   state = {
     cart: [],

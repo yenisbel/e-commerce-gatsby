@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import stripeLogo from '../images/powered_by_stripe.svg'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -35,9 +36,16 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <div>
+            © {new Date().getFullYear()}, Built by <a href="https://yenisbel.com">Yenisbel</a>{` `}
+            with <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </div>
+          <div>
+            <a href="https://stripe.com">
+              <img src={stripeLogo} alt="Payments powered by Stripe" />
+            </a>
+          </div>
+          
         </footer>
       </div>
     </>

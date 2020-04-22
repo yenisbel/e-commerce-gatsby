@@ -8,15 +8,15 @@ import Checkout from "../components/checkout"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new e-commerce site with stripe checkout.</p>
-    <p>Let's go choose something great.</p>
+    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]}/>
+    <h1>Hello friends</h1>
+    <p>Welcome to my new e-commerce site with stripe checkout for payments.</p>
+    <p>Let's go choose something great to wear.</p>
     <Checkout/>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Link to="/advanced/">Go to popular apparel page</Link>
   </Layout>
 )
 

@@ -34,33 +34,70 @@ const formatPrice = (amount, currency) => {
   return numberFormat.format(price)
 }
 
-const SkuCard = ({ sku, stripePromise }) => {
-  const redirectToCheckout = async (event, sku, quantity = 1) => {
-    event.preventDefault()
-    const stripe = await stripePromise
-    const { error } = await stripe.redirectToCheckout({
-      items: [{ sku, quantity }],
-      successUrl: `${window.location.origin}/page-2/`,
-      cancelUrl: `${window.location.origin}/advanced`,
-    })
-
-    if (error) {
-      console.warn("Error:", error)
-    }
+const SkuCard = class extends React.Component {
+  state = {
+    disabled: false,
+    buttonText: 'ADD TO CART',
+    paymentMessage: '',
   }
 
-  return (
-    <div style={cardStyles}>
-      <h4>{sku.attributes.name}</h4>
-      <p>Price: {formatPrice(sku.price, sku.currency)}</p>
-      <button
-        style={buttonStyles}
-        onClick={event => redirectToCheckout(event, sku.id)}
-      >
-        BUY ME
-      </button>
-    </div>
-  )
+  resetButton() {
+    this.setState({ disabled: false, buttonText: 'ADD ME ONE MORE TIME!' })
+  }
+
+  addToCart(event, skuId, quantity = 1) {
+    event.preventDefault()
+    this.setState({ disabled: true, buttonText: 'ADDED...' })
+    this.props.addToCart(skuId)
+    setTimeout(this.resetButton.bind(this), 500)
+  }
+
+  render() {
+    const sku = this.props.sku
+    return (
+      <div style={cardStyles}>
+        <h4>{sku.attributes.name}</h4>
+        <p>Price: {formatPrice(sku.price, sku.currency)}</p>
+        <button
+          style={buttonStyles}
+          onClick={event => this.addToCart(event, sku.id)}
+          disabled={this.state.disabled}
+        >
+          {this.state.buttonText}
+        </button>
+        {this.state.paymentMessage}
+      </div>
+    )
+  }
 }
+
+// const SkuCard = ({ sku, stripePromise }) => {
+//   const redirectToCheckout = async (event, sku, quantity = 1) => {
+//     event.preventDefault()
+//     const stripe = await stripePromise
+//     const { error } = await stripe.redirectToCheckout({
+//       items: [{ sku, quantity }],
+//       successUrl: `${window.location.origin}/page-2/`,
+//       cancelUrl: `${window.location.origin}/advanced`,
+//     })
+
+//     if (error) {
+//       console.warn("Error:", error)
+//     }
+//   }
+
+//   return (
+//     <div style={cardStyles}>
+//       <h4>{sku.attributes.name}</h4>
+//       <p>Price: {formatPrice(sku.price, sku.currency)}</p>
+//       <button
+//         style={buttonStyles}
+//         onClick={event => redirectToCheckout(event, sku.id)}
+//       >
+//         BUY ME
+//       </button>
+//     </div>
+//   )
+// }
 
 export default SkuCard
