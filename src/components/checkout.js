@@ -13,7 +13,7 @@ const buttonStyles = {
   letterSpacing: "1.5px",
 }
 
-const stripePromise = loadStripe("pk_test_NHFAF23R8WLXkmh0BmtJdCgq00F6F3M93N")
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
 const redirectToCheckout = async event => {
   event.preventDefault()
@@ -21,7 +21,7 @@ const redirectToCheckout = async event => {
   const { error } = await stripe.redirectToCheckout({
     items: [{ sku: "sku_H8OLipv0BoLIAH", quantity: 1 }],
     successUrl: `${window.location.origin}/page-2/`,
-    cancelUrl: `${window.location.origin}/page-2/`,
+    cancelUrl: `${window.location.origin}/`,
   })
 
   if (error) {
@@ -32,7 +32,7 @@ const redirectToCheckout = async event => {
 const Checkout = () => {
   return (
     <button style={buttonStyles} onClick={redirectToCheckout}>
-      BUY MY T-SHIRT
+      BUY MY APPAREL
     </button>
   )
 }
