@@ -1,6 +1,4 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+require('dotenv').config({path: './.env.development'})
 
 module.exports = {
   siteMetadata: {
@@ -13,7 +11,7 @@ module.exports = {
     {
       resolve: `gatsby-source-stripe`,
       options: {
-        objects: ['Sku'],
+        objects: ['Sku', 'Product'],
         secretKey: process.env.STRIPE_SECRET_KEY,
         downloadFiles: true,
       },
