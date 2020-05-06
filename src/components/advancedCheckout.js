@@ -17,7 +17,7 @@ const Checkout = class extends React.Component {
   // You can find your key in the Dashboard:
   // https://dashboard.stripe.com/account/apikeys
   componentDidMount() {
-    this.stripe = window.Stripe('GATSBY_STRIPE_PUBLISHABLE_KEY', {
+    this.stripe = window.Stripe('pk_live_RFwsUf3GEwTnCDzyHjRjyN0v00ZuejnPjT', {
       betas: ['checkout_beta_4'],
     })
   }
