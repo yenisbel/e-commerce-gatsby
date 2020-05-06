@@ -45,8 +45,8 @@ const CartExample = () => (
     </h2>
     <CartProvider
       stripe={stripePromise}
-      successUrl={`${window.location.origin}/success`}
-      cancelUrl={`${window.location.origin}/canceled`}
+      successUrl="https://e-commerce-stripe.netlify.app/canceled/"
+      cancelUrl="https://e-commerce-stripe.netlify.app/success/"
       currency="USD"
       allowedCountries={['US', 'GB', 'CA']}
       billingAddressCollection={true}
