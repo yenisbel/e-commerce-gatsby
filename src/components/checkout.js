@@ -19,7 +19,7 @@ const redirectToCheckout = async event => {
   event.preventDefault()
   const stripe = await stripePromise
   const { error } = await stripe.redirectToCheckout({
-    items: [{ sku: "sku_H8sA6nW3TuoPzf", quantity: 1 }],
+    items: [{ sku: process.env.GATSBY_BUTTON_SKU_ID, quantity: 1 }],
     successUrl: `${window.location.origin}/success`,
     cancelUrl: `${window.location.origin}/canceled`,
   })
