@@ -64,6 +64,10 @@ A quick look at the top-level files and directories you'll see in this project.
 
 8.  **`.env.sample`**: This file is where Gatsby expects to find any environment variabbles to connect with the Stripe account.
 
+## Stripe
+
+This page includes test card numbers and other information to make sure all is working  as planned. 
+[Basic testing cards](https://stripe.com/docs/testing#cards)
 
 ## 💫 Deploy
 
